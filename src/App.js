@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import WeatherCard from './weatherCard';
 
 const weatherData = [
   {
@@ -32,48 +33,20 @@ const weatherData = [
   },
 ];
 
-const getWeatherIcon = (temp) => {
-  if (temp <= 20) return '❄️'; 
-  if (temp > 20 && temp < 30) return '🌤️'; 
-  return '☀️'; 
-};
 
 function App() {
-  return(
+  return (
     <div className="weather">
       <h1 className="app-title">תחזית מסביב לעולם</h1>
       <div className="weather-grid">
-      {weatherData.map((location, index) => (
-          <div key={index} className="weather-card">
-            <div className="weather-header">
-              <span className="weather-icon">{getWeatherIcon(location.feels_like)}</span>
-              <div>
-                <h1 className="city-name">{location.name}</h1>
-                <h3 className="weather-description">{location.description}</h3>
-              </div>
-            </div>
-            <div className="weather-details">
-              <div>
-                <span>לחות</span>
-                <strong>{location.humidity}%</strong>
-              </div>
-              <div>
-                <span>טמפ' מורגשת</span>
-                <strong>{location.feels_like}°C</strong>
-              </div>
-              <div>
-                <span>טמפ' נמדדת</span>
-                <strong>{location.temp}°C</strong>
-              </div>
-            </div>
-          </div>
+        {weatherData.map((location, index) => (
+          <WeatherCard key={index} location={location} />
         ))}
-
       </div>
     </div>
-
-
   );
 }
+
+
 
 export default App;
