@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import WeatherCard from './weatherCard';
-
+import API_TOKEN from '../config'
 
 const WeatherInfo = () => {
     const [loading, setLoading] = useState(true);
     const [weatherData, setWeatherData] = useState([]);
-    const apiKey = '22c9332553d773b4902c4113fc699256'; 
+    const apiKey = API_TOKEN
     const cities = ['New York', 'London', 'Eilat', 'Alaska'];
 
   
