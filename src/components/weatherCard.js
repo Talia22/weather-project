@@ -1,6 +1,4 @@
-import React from 'react';
-
-const weatherCard = ({ location }) => {
+const WeatherCard = ({ location }) => {
    
     const getWeatherIcon = (temp) => {
         if (temp <= 20) return '❄️'; 
@@ -11,24 +9,24 @@ const weatherCard = ({ location }) => {
     return (
     <div className="weather-card">
         <div className="weather-header">
-            <span className="weather-icon">{getWeatherIcon(location.temp)}</span>
+            <span className="weather-icon">{getWeatherIcon(location.main?.feels_like)}</span>
             <div className="weather-info">
                 <h1 className="city-name">{location.name}</h1>
-                <h3 className="weather-description">{location.description}</h3>
+                <h3 className="weather-description">{location.weather[0]?.description}</h3>
             </div>
             </div>
             <div className="weather-details">
                 <div>
                     <span>לחות</span>
-                    <strong>{location.humidity}%</strong>
+                    <strong>{location.main?.humidity}%</strong>
                 </div>
                 <div>
                     <span>טמפ' מורגשת</span>
-                    <strong>{location.feels_like}°C</strong>
+                    <strong>{Math.round(location.main?.feels_like)}°C</strong>
                 </div>
                 <div>
                     <span>טמפ' נמדדת</span>
-                    <strong>{location.temp}°C</strong>
+                    <strong>{Math.round(location.main?.temp)}°C</strong>
                 </div>
             </div>
         </div>
@@ -36,4 +34,4 @@ const weatherCard = ({ location }) => {
   
   };
   
-  export default weatherCard;
+  export default WeatherCard;
